@@ -1,0 +1,33 @@
+.grid-container {
+  display: grid;
+  /* Defining Columns */
+  grid-template-columns: repeat(4, 1fr);
+
+  /* grid-template-columns: 100px 200px 100px; */
+  /* 1fr 1fr 1fr 1fr */
+  /* grid-gap/gap: <row-gap> <column-gap>
+  row-gap, column-gap
+  */
+  /* gap: 20px 25px; */
+  border: 2px dotted green;
+  /* Horizontal Movement
+  justify-content: */
+  justify-content: center;
+  /* Vertical Alignment
+    align-content
+  */
+}
+
+.child {
+  border: 4px solid red;
+}
+
+/* Mobiles: 330 - 440 */
+/* Tab: 501-992 */
+/*  */
+
+@media screen and (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

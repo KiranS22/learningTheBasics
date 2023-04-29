@@ -1,0 +1,38 @@
+.container {
+  /* border: 1px solid red; */
+  /* Full Height */
+  height: 100vh;
+  position: relative;
+  /* Applying Image in the BG */
+  background-image: url("https://sxcontent9668.azureedge.us/cms-assets/assets/STARSHIP_Testflight_DESKTOP_2b3bea613a.jpg");
+
+  /* Fitting the image in the defined area/space */
+  background-size: cover;
+}
+
+.child {
+  position: absolute;
+  /* With Absolute Pos, you also have to apply co-ordinates
+
+  top, left, right, bottom
+  */
+  /* top: 10%; */
+  bottom: 20%;
+  left: 8%;
+  /* right: 10%; */
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  padding: 7px 14px;
+}
+
+/*
+Positioning:
+static (default)
+relative
+absolute
+fixed
+sticky
+*/

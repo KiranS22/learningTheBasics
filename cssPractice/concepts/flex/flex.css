@@ -1,0 +1,62 @@
+.container {
+  border: 1px solid red;
+  display: flex;
+  height: 600px;
+  /* Horizontal Movement
+  justify-content:start (default)
+  end
+  center
+  space-between
+  space-around
+  space-evenly
+  */
+  justify-content: center;
+
+  /* align-items (vertical Movement)
+start/flex-start
+center
+end/flex-end
+  */
+  align-items: center;
+
+  /* flex-wrap (nowrap) default
+
+  wrap
+
+  */
+  /* flex-wrap: wrap; */
+
+  /* Flex Direction
+  row(default)
+  column
+  row-reverse
+  column-reverse */
+  /*
+  flex-direction:row
+  => Horizontal: justify-content
+  => Vertical: align-items
+
+  flex-direction: column
+  => Horizontal: align-items
+  => Vertical: justify-content
+  */
+  flex-direction: column;
+}
+
+/*
+solid
+dotted
+dashed
+*/
+
+.child {
+  border: 2px dotted black;
+  height: 150px;
+  width: 150px;
+  background-color: orange;
+  /* self (child) */
+}
+
+.child h2 {
+  /* text-align: center; */
+}
