@@ -11,7 +11,6 @@
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 4;
 }
 
 .logo {
@@ -20,6 +19,8 @@
 nav.container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  height: fit-content;
 }
 .first-links ul,
 .second-links ul {
@@ -35,21 +36,23 @@ nav.container {
 li:hover {
   background-color: rgba(0, 0, 0, 0.254);
 }
-
 .overlay {
   position: absolute;
   background: transparent;
   display: flex;
-  height: 100vh;
-  width: 100vw;
-  top: 0%;
+  height: 96vh;
+  width: 98vw;
+  top: 4%;
   left: 0%;
   justify-content: center;
   z-index: 4;
 }
 
 .buttons {
-  align-self: flex-end;
+  position: absolute;
+  bottom: 0%;
+  left: auto;
+
   border: 2px solid purple;
 }
 .buttons button {
@@ -57,7 +60,7 @@ li:hover {
 }
 .overlay .heading {
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: auto;
   text-align: center;
 }
