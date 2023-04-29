@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.first-bg {
+  background-image: url("./images/Homepage-Model-3-Desktop-RHD.webp");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 4;
+}
+
+.logo {
+  margin-left: 15px;
+}
+nav.container {
+  display: flex;
+  justify-content: space-between;
+}
+.first-links ul,
+.second-links ul {
+  list-style: none;
+}
+.first-links ul li,
+.second-links ul li {
+  margin: 0 10px;
+  display: inline;
+  transition: 0.33s ease;
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.254);
+}
+
+.overlay {
+  position: absolute;
+  background: transparent;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  top: 0%;
+  left: 0%;
+  justify-content: center;
+  z-index: 4;
+}
+
+.buttons {
+  align-self: flex-end;
+  border: 2px solid purple;
+}
+.buttons button {
+  margin: 0 20px;
+}
+.overlay .heading {
+  position: absolute;
+  top: 30%;
+  left: auto;
+  text-align: center;
+}
