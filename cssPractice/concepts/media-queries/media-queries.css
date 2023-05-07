@@ -1,0 +1,44 @@
+.container {
+  background-color: aliceblue;
+}
+
+.container h1 {
+  color: red;
+}
+
+.container p {
+  color: pink;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.child {
+  border: 1px solid black;
+}
+
+/* width: */
+
+/* Media Queries */
+
+/* Ipads/Tablets */
+/* 700 - 1000 */
+@media screen and (min-width: 501px) and (max-width: 1050px) {
+  .container {
+    background-color: purple;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Mobiles: 300 - 440 */ /* 0 - 500 */ /* For all devices of 500px or below */
+@media screen and (max-width: 500px) {
+  /* Your CSS goes in here */
+  .container {
+    background-color: black;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
