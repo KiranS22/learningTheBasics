@@ -191,6 +191,9 @@ hr {
   width: 1000px;
   height: 400px;
 }
+.overlay-image {
+  margin-left: auto;
+}
 .overlay .overlay-image img {
   width: 340px;
   height: 330px;
@@ -198,11 +201,24 @@ hr {
 }
 .overlay .text-and-btn {
   width: 30%;
+  margin-left: 40px;
 }
 .overlay .text-and-btn h2 {
   font-family: Tiempos;
   font-size: 1.938rem;
   font-weight: 400;
   line-height: 1.2;
+}
+.overlay .text-and-btn button {
+  padding: 8px 10px;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(12, 53, 12);
+  border-radius: 15px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+.overlay .text-and-btn h3 {
+  font-size: 12px;
 }
 /* --------------------------------- */
