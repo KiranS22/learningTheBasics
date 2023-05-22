@@ -25,20 +25,43 @@ const changeData = (obj, name, val) => {
 // returnChange('$277') should return {'$100': 2, '$50': 1, '$20': 1, '$5': 1, '$1': 2
 
 const returnChange = (str) => {
-  let newChange = {};
-  let avalibleChange = [5, 100, 50, 20, 10, 5, 1];
-  for (let i = 0; i < avalibleChange.length; i++) {
-    let change = avalibleChange[i];
-    let changeObject = { ...newChange, [change]: 0 };
+  let array = str.split("");
 
-    console.log(changeObject);
+  let newChange = {};
+  for (let i = 1; i < array.length; i++) {
+    const element = Number(array[i]);
+
+    let avalibleChange = [500, 100, 50, 20, 10, 5, 1];
+    for (let j = 0; j < avalibleChange.length; i++) {
+      let change = avalibleChange[j];
+      let amount = change / element;
+      if (element % amount > 0) {
+        newChange[change] = amount;
+      }
+    }
   }
+  return newChange;
 };
 
 console.log(returnChange("$277"));
 
 // Task 3: Write a function countColors(arr) that takes in an Array, and returns the number of times each color is repeated
 // // in an object format.
+const countColors = (arr) => {
+  let colorsObj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    let name = arr[i];
+    if (!colorsObj.hasOwnProperty(name)) {
+      colorsObj[name] = 1;
+    } else {
+      colorsObj[name]++;
+    }
+  }
+
+  return colorsObj;
+};
+
 let colors = ["green", "orange", "yellow", "orange", "orange"];
 let colors2 = [
   "indigo",
@@ -50,64 +73,54 @@ let colors2 = [
   "indigo",
   "indigo",
 ];
-const countColors = (arr) => {
-  let yellowCount = 0;
-  let orangeCount = 0;
-  let indigoCount = 0;
-  let blackCount = 0;
-  let greenCount = 0;
-  let colorsObj = {};
 
-  for (let i = 0; i < arr.length; i++) {
-    let name = arr[i];
-
-    // {yellow: 1}
-
-    let c = arr[i];
-    switch (c) {
-      case c === "green":
-        greenCount++;
-
-        break;
-      case c === "yellow":
-        yellowCount++;
-
-        break;
-      case c === "black":
-        blackCount++;
-
-        break;
-      case c === "orange":
-        orangeCount++;
-
-        break;
-
-      case c === "indigo":
-        indigoCount++;
-
-        break;
-
-      default:
-        break;
-    }
-    // let colors = [...arr[c]];
-    // if (
-    //   yellowCount === 0 ||
-    //   orangeCount === 0 ||
-    //   indigoCount === 0 ||
-    //   blackCount === 0 ||
-    //   greenCount === 0
-    // ) {
-    // }
-  }
-};
-countColors(colors); //should return {'green': 1, 'orange': 3, 'yellow': 1}
-countColors(colors2); //should return {'indigo': 5, 'orange': 2, 'black': 1}
+console.log(countColors(colors));
+console.log(countColors(colors2));
 
 //Task 4: Write a function 'changetoCapital(arr)' that takes in an array, searches for vowels in the strings in the array and if there are 2 or more vowels in a word, transform the word to Uppercase. After modifications return the new array.
-// let arr = ["Carry", "Run Away", "Japan", "Australia", "Final String"]
+const changeToCapital = (inputArr) => {
+  let newArr = [];
+
+  for (let i = 0; i < inputArr.length; i++) {
+    let str = inputArr[i];
+    let vowelCount = 0;
+    let vowels = "AEIOUaeiou";
+
+    for (let j = 0; j < str.length; j++) {
+      if (vowels.includes(str[j])) {
+        vowelCount++;
+      }
+    }
+
+    if (vowelCount >= 2) {
+      str = str.toUpperCase();
+    }
+
+    newArr.push(str);
+  }
+
+  return newArr;
+};
+
+let array = ["Carry", "Run Away", "Japan", "Australia", "Final String"];
+console.log(changeToCapital(array));
 
 //Task 5: Write a function 'reversal(str)' that accepts a string as a parameter and reverses the words in that string whose length is greater than 5.
+const reverse = (str) => str.split("").reverse().join("");
 
-// let message = 'These are practice javascript questions'
-//console.log(reversal(message))  //Should return 'These are ecitcarp tpircsavaj snoitseuq'
+const reversal = (str) => {
+  let newStr = str.split(" ");
+
+  for (let i = 0; i < newStr.length; i++) {
+    let word = newStr[i];
+    if (word.length > 5) {
+      word = reverse(word);
+      newStr[i] = word;
+    }
+  }
+
+  return newStr.join(" ");
+};
+
+let message = "These are practice javascript questions";
+console.log(reversal(message)); //Should return 'These are ecitcarp tpircsavaj snoitseuq'
