@@ -24,20 +24,18 @@ const changeData = (obj, name, val) => {
 // returnChange('$510') should return {'$500': 1, '$10': 1}
 // returnChange('$277') should return {'$100': 2, '$50': 1, '$20': 1, '$5': 1, '$1': 2
 
+//  Solved with help  
 const returnChange = (str) => {
-  let array = str.split("");
+  let number = Number(str.slice(1));
 
+  let avalibleChange = [500, 100, 50, 20, 10, 5, 1];
   let newChange = {};
-  for (let i = 1; i < array.length; i++) {
-    const element = Number(array[i]);
-
-    let avalibleChange = [500, 100, 50, 20, 10, 5, 1];
-    for (let j = 0; j < avalibleChange.length; i++) {
-      let change = avalibleChange[j];
-      let amount = change / element;
-      if (element % amount > 0) {
-        newChange[change] = amount;
-      }
+  for (let i = 0; i < avalibleChange.length; i++) {
+    const note = avalibleChange[i];
+    let amount = parseInt(number / note);
+    if (amount > 0) {
+      number = number % note;
+      newChange[` $${note}`] = amount;
     }
   }
   return newChange;
