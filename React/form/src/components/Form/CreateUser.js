@@ -1,25 +1,36 @@
 import React, { useState } from "react";
+import ShowUser from "../showUser/ShowUser";
 
 const CreateUser = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  let users = [];
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState(null);
+
+  const resetForm = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let user = {
+    const newUser = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password,
     };
-    users.push(user);
+    setUsers([newUser]);
+    resetForm();
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           placeholder="First Name"
@@ -54,6 +65,9 @@ const CreateUser = () => {
         />
         <button type="submit">Submit</button>
       </form>
+
+      {console.log("users before passing as props", users)}
+      <ShowUser users={users || []} />
     </div>
   );
 };
