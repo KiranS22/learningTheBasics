@@ -6,8 +6,7 @@ const CreateUser = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [user, setUser] = useState(null);
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
 
   const resetForm = () => {
     setFirstName("");
@@ -24,13 +23,13 @@ const CreateUser = () => {
       email: email,
       password: password,
     };
-    setUsers([newUser]);
+    setUsers((prevUsers) => [...prevUsers, newUser]);
     resetForm();
   };
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="First Name"
@@ -66,8 +65,11 @@ const CreateUser = () => {
         <button type="submit">Submit</button>
       </form>
 
-      {console.log("users before passing as props", users)}
-      <ShowUser users={users || []} />
+      <div>
+        {users.map((user, index) => (
+          <ShowUser key={index} users={user} />
+        ))}
+      </div>
     </div>
   );
 };
