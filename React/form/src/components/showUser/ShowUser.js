@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from "react";
+import "./Display.css";
 
 const ShowUser = ({ users }) => {
-
-
-  return <>
-  <h3>First Name:{users.firstName}</h3>
-  <h3>Last Name:{users.lastName}</h3>
-  <h3>Email: {users.email}</h3>
-  </>;
+  return (
+    <>
+      <div className="display-wrap">
+        <div className="user-info">
+          <h3>First Name:</h3> <p>{users.firstName}</p>
+        </div>
+        <div className="user-info">
+          {" "}
+          <h3>Last Name:</h3> <p>{users.lastName}</p>
+        </div>
+        <div className="user-info">
+          <h3>Email Address:</h3> <p>{users.email}</p>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ShowUser;

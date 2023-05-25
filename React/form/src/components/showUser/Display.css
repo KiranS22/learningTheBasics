@@ -1,0 +1,21 @@
+.display-wrap {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.user-info {
+  display: flex;
+  margin: 10px 8px;
+  justify-content: space-evenly;
+  border-bottom: 2px solid rgb(195, 184, 184);
+  border-top: 2px solid rgb(195, 184, 184);
+}
+
+.user-info h3 p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.user-info:last-child h3 {
+  margin-left: 64px;
+}
