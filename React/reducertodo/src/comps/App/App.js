@@ -8,6 +8,7 @@ function App() {
   const reducer = (state, action) => {
     switch (action.type) {
       case "ADD":
+        setInpVal("");
         return { todos: [...state.todos, action.payload] };
       default:
         return state;
