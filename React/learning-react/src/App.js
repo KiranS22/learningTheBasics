@@ -4,6 +4,8 @@ import Child from "./Child";
 import { createContext } from "react";
 
 import { useState, useEffect } from "react";
+import Reducer from "./useReducer/Reducer";
+import Callback from "./useCallback/Callback";
 // creating the context
 export let countContext = createContext();
 
@@ -18,20 +20,23 @@ function App() {
   let headerStyle = { color: "red" };
   return (
     <div className="App">
-      <h1 style={headerStyle}> React Revision Counter</h1>
-      <p>{count}</p>
+      {/* <h1 style={headerStyle}> React Revision Counter</h1>
+      <p>{count}</p> */}
       {/* passing props  */}
       {/* Wrap the c omponents that you wish to share state with in the  provider. This wull mean that the state will be accsessable to it anbd ALL it's children */}
       {/* Add  the value prop to the provider and then assign anything that you want to send */}
       <countContext.Provider value={565}>
-        <Child
+        {/* <Child
           count={count}
           isThere={true}
           myName={"Kiran"}
           headerStyling={headerStyle}
-        />
+        /> */}
       </countContext.Provider>
-      <button onClick={() => setCount(count + 1)}>+</button>{" "}
+{/* 
+      <Reducer /> */}
+
+      {/* <button onClick={() => setCount(count + 1)}>+</button>{" "}
       <button
         onClick={() => {
           if (count > 0) {
@@ -40,7 +45,8 @@ function App() {
         }}
       >
         -
-      </button>
+      </button> */}
+      <Callback/>
     </div>
   );
 }

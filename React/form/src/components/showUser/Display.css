@@ -1,6 +1,6 @@
 .display-wrap {
   width: 90%;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .user-info {
@@ -14,8 +14,4 @@
 .user-info h3 p {
   font-size: 20px;
   text-align: center;
-}
-
-.user-info:last-child h3 {
-  margin-left: 64px;
 }

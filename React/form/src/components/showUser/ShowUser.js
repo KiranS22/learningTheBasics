@@ -1,5 +1,6 @@
 import "./Display.css";
 
+
 const ShowUser = ({ users }) => {
   return (
     <>
@@ -13,6 +14,9 @@ const ShowUser = ({ users }) => {
         </div>
         <div className="user-info">
           <h3>Email Address:</h3> <p>{users.email}</p>
+        </div>
+        <div className="user-info">
+          <h3>Password:</h3> <p>{users.password}</p>
         </div>
       </div>
     </>
