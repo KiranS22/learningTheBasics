@@ -14,27 +14,28 @@ import axios from "axios";
 export let countContext = createContext();
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const getCountries = async () => {
-    try {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      let { data } = response;
-      setCountries(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  useEffect(() => {
-    getCountries();
-  }, []);
+  // const [countries, setCountries] = useState([]);
+  // const getCountries = async () => {
+  //   try {
+  //     const response = await axios.get("https://restcountries.com/v3.1/all");
+  //     let { data } = response;
+  //     setCountries(data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getCountries();
+  // }, []);
   // UsaeEffect Runs once when the component mounts and then every time the dendancy items change
 
   const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
   let arr = [
-    { name: "watch", price: 20000 },
-    { name: "bag", price: 400000 },
-    { name: "shirt", price: 20 },
+    { name: "watch", price: 20000, qty: 0 },
+    { name: "bag", price: 400000, qty: 0 },
+    { name: "shirt", price: 20, qty: 0 },
   ];
   const [products, setProducts] = useState(arr);
   // useEffect(() => {
@@ -77,13 +78,13 @@ function App() {
       </button> */}
       {/* <Callback/> */}
       {/* <Memo /> */}
-      {/* {products.map((items, index) => {
+      {products.map((items, index) => {
         return <Mapping item={items} id={index} addToCart={addToCart} />;
-      })} */}
-      {countries.map((c) => {
+      })}
+      {/* {countries.map((c) => {
         console.log(c);
         return <Axios countries={c} />;
-      })}
+      })} */}
     </div>
   );
 }
