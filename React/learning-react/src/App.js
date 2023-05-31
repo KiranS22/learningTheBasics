@@ -7,16 +7,44 @@ import { useState, useEffect } from "react";
 import Reducer from "./useReducer/Reducer";
 import Callback from "./useCallback/Callback";
 import Memo from "./useMemo/Memo";
+import Mapping from "./Mapping-In-React/Mapping";
+import Axios from "./Axios/Axios";
+import axios from "axios";
 // creating the context
 export let countContext = createContext();
 
 function App() {
+  const [countries, setCountries] = useState([]);
+  const getCountries = async () => {
+    try {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      let { data } = response;
+      setCountries(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getCountries();
+  }, []);
   // UsaeEffect Runs once when the component mounts and then every time the dendancy items change
 
   const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
+  let arr = [
+    { name: "watch", price: 20000 },
+    { name: "bag", price: 400000 },
+    { name: "shirt", price: 20 },
+  ];
+  const [products, setProducts] = useState(arr);
   // useEffect(() => {
   //   console.log("useEffect Ran");
   // }, [count]);
+  console.log(cart);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
 
   let headerStyle = { color: "red" };
   return (
@@ -48,7 +76,14 @@ function App() {
         -
       </button> */}
       {/* <Callback/> */}
-      <Memo />
+      {/* <Memo /> */}
+      {/* {products.map((items, index) => {
+        return <Mapping item={items} id={index} addToCart={addToCart} />;
+      })} */}
+      {countries.map((c) => {
+        console.log(c);
+        return <Axios countries={c} />;
+      })}
     </div>
   );
 }
