@@ -6,6 +6,7 @@ import { createContext } from "react";
 import { useState, useEffect } from "react";
 import Reducer from "./useReducer/Reducer";
 import Callback from "./useCallback/Callback";
+import Memo from "./useMemo/Memo";
 // creating the context
 export let countContext = createContext();
 
@@ -33,7 +34,7 @@ function App() {
           headerStyling={headerStyle}
         /> */}
       </countContext.Provider>
-{/* 
+      {/*
       <Reducer /> */}
 
       {/* <button onClick={() => setCount(count + 1)}>+</button>{" "}
@@ -46,7 +47,8 @@ function App() {
       >
         -
       </button> */}
-      <Callback/>
+      {/* <Callback/> */}
+      <Memo />
     </div>
   );
 }
