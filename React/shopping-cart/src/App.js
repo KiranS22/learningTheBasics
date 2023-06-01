@@ -35,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1> Cart</h1>
       <h2>Cart Count: {cartCount}</h2>
       {cart.map((item) => {
         return <Cart item={item} />;
