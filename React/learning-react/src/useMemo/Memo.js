@@ -10,29 +10,30 @@ const Memo = () => {
   // We only want isOdd to recalculate the return vvalue if count1 changes
   // useMemo solves this by caching the value of the function and only allowes the function to recalculate if any dependancy changes
 
-  const isOdd = useMemo(() => {
-    let num = 0;
-    while (num < 500) {
-      num++;
-    }
-    if (count1 % 2 === 0) {
-      return false;
-    }
-    return true;
-  }, [count1]);
-  const inc1 = () => {
-    setCount1(count1 + 1);
-  };
-  const inc2 = () => {
-    setCount2(count2 + 1);
-  };
+  // const isOdd = useMemo(() => {
+  //   let num = 0;
+  //   while (num < 500) {
+  //     num++;
+  //   }
+  //   if (count1 % 2 === 0) {
+  //     return false;
+  //   }
+  //   return true;
+  // }, [count1]);
+  // const inc1 = () => {
+  //   setCount1(count1 + 1);
+  // };
+  // const inc2 = () => {
+  //   setCount2(count2 + 1);
+  // };
   // isOdd's value is cached until the dependancy value changes, which will mean that count 2 will not expirence the delay
   return (
-    <div>
-      <button onClick={() => inc1()}>INC Count 1:{count1}</button>{" "}
-      <p>{isOdd ? "Number is odd" : "Number is Even"}</p>
-      <button onClick={() => inc2()}>Inc Count 2: {count2}</button>
-    </div>
+    <></>
+    // <div>
+    //   <button onClick={() => inc1()}>INC Count 1:{count1}</button>{" "}
+    //   {/* <p>{isOdd ? "Number is odd" : "Number is Even"}</p> */}
+    //   <button onClick={() => inc2()}>Inc Count 2: {count2}</button>
+    // </div>
   );
 };
 

@@ -2,36 +2,15 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Mapping from "./Mapping";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
+import { selectCart, selectCount } from "./Redux/Slices/CartSlice";
+import { selectProducts } from "./Redux/Slices/ProductsSlice";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
-  const [cart, setCart] = useState([]);
-  let arr = [
-    { name: "watch", price: 20000, qty: 0 },
-    { name: "bag", price: 400000, qty: 0 },
-    { name: "shirt", price: 20, qty: 0 },
-  ];
-  const [products, setProducts] = useState(arr);
+  let cart = useSelector(selectCart);
+  let cartCount = useSelector(selectCount);
 
-  const addToCart = (item) => {
-    const existingItem = cart.find((cartItem) => cartItem.name === item.name);
-    if (existingItem) {
-      const updatedCart = cart.map((cartItem) => {
-        if (cartItem.name === item.name) {
-          return { ...cartItem, qty: cartItem.qty + 1 };
-        }
-        return cartItem;
-      });
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...item, qty: 1 }]);
-    }
-  };
-
-  useEffect(() => {
-    const totalCount = cart.reduce((total, item) => total + item.qty, 0);
-    setCartCount(totalCount);
-  }, [cart]);
+  let products = useSelector(selectProducts);
 
   return (
     <div className="App">
@@ -42,14 +21,7 @@ function App() {
       })}
 
       {products.map((items, index) => {
-        return (
-          <Mapping
-            item={items}
-            id={index}
-            addToCart={addToCart}
-            cartCount={cartCount}
-          />
-        );
+        return <Mapping item={items} id={index} cartCount={cartCount} />;
       })}
     </div>
   );

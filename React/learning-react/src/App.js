@@ -10,6 +10,7 @@ import Memo from "./useMemo/Memo";
 import Mapping from "./Mapping-In-React/Mapping";
 import Axios from "./Axios/Axios";
 import axios from "axios";
+
 // creating the context
 export let countContext = createContext();
 
@@ -32,20 +33,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-  let arr = [
-    { name: "watch", price: 20000, qty: 0 },
-    { name: "bag", price: 400000, qty: 0 },
-    { name: "shirt", price: 20, qty: 0 },
-  ];
-  const [products, setProducts] = useState(arr);
-  // useEffect(() => {
-  //   console.log("useEffect Ran");
-  // }, [count]);
-  console.log(cart);
 
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-  };
 
   let headerStyle = { color: "red" };
   return (
@@ -55,14 +43,14 @@ function App() {
       {/* passing props  */}
       {/* Wrap the c omponents that you wish to share state with in the  provider. This wull mean that the state will be accsessable to it anbd ALL it's children */}
       {/* Add  the value prop to the provider and then assign anything that you want to send */}
-      <countContext.Provider value={565}>
+      {/* <countContext.Provider value={565}> */}
         {/* <Child
           count={count}
           isThere={true}
           myName={"Kiran"}
           headerStyling={headerStyle}
         /> */}
-      </countContext.Provider>
+      {/* </countContext.Provider> */}
       {/*
       <Reducer /> */}
 
@@ -78,9 +66,7 @@ function App() {
       </button> */}
       {/* <Callback/> */}
       {/* <Memo /> */}
-      {products.map((items, index) => {
-        return <Mapping item={items} id={index} addToCart={addToCart} />;
-      })}
+  
       {/* {countries.map((c) => {
         console.log(c);
         return <Axios countries={c} />;
