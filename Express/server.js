@@ -169,10 +169,9 @@ app.delete("/products/:id", (req, res) => {
   res.send("Product Deleted Sucsessfuly");
 });
 
-app.put("/products/:id", (req, res) => {
-  let { id } = req.params;
+app.put("products/:id", (req, res) => {
   let { title, price, description, rating, category } = req.body;
-  
+  let { id } = req.params;
   products = products.map((item) => {
     if (item.id === Number(id)) {
       return {
