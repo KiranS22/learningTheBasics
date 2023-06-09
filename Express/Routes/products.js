@@ -105,7 +105,7 @@ let products = [
     rating: { rate: 2.9, count: 470 },
   },
 ];
- 
+
 productRouter.get("/", (req, res) => {
   res.send(products);
 });
@@ -157,7 +157,7 @@ productRouter.put("products/:id", (req, res) => {
   products = products.map((item) => {
     if (item.id === Number(id)) {
       return {
-        ...foundProduct,
+        ...item,
         title,
         price,
         description,
