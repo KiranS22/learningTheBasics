@@ -24,8 +24,22 @@ authRouter.post("/register", async (req, res) => {
   }
 });
 
-authRouter.post("/login", (req, res) => {
-  
+authRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  //Finds the user in the users array who's email matches the passed in email
+  let foundUserInDB = users.find((user) => user.email == email);
+  // if the user is found then compare the hashed password with the password that's passed in
+  // then we can allow the user to log in. If not then we throw an error
+
+  if (foundUserInDB) {
+    let validPass = await bcrypt.compare(password, foundUserInDB.password);
+    if (validPass) res.send({ status: "success", message: "user logged in" });
+  } else {
+    res.send({
+      status: "error",
+      message: "user with these credentails not found",
+    });
+  }
 });
 
 module.exports = { authRouter, users };
