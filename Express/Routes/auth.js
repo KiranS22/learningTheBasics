@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 // HashSync - syncronus
 // Hash - is async so requires await keyword
 const authRouter = express.Router();

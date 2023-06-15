@@ -5,7 +5,7 @@ const productRouter = express.Router();
 productRouter.get("/", async (req, res) => {
   try {
     const allProducts = await pool.query("SELECT * FROM products");
-    if (allProducts) {
+    if (allProducts.rows.length > 0) {
       res
         .send({ data: allProducts.rows, status: "success", message })
         .status(200);
@@ -27,9 +27,13 @@ productRouter.post("/", async (req, res) => {
       "INSERT INTO products( title, price, description, rating, category, image) VALUES($1, $2,$3,$4,$5,$6) RETURNING *",
       [title, price, description, rating, category, image]
     );
-    if (newProduct) {
+    if (newProduct.rows.length > 0) {
       res
-        .send({ data: newProduct.rows[0], status: "success", message })
+        .send({
+          data: newProduct.rows[0],
+          status: "success",
+          message: "dwtched all users",
+        })
         .status(200);
     } else {
       res.send({ status: "error" }).status(404);
@@ -50,12 +54,12 @@ productRouter.get("/:id", async (req, res) => {
       [Number(id)]
     );
 
-    if (foundProduct) {
+    if (foundProduct.rows.length > 0) {
       res
         .send({
           data: foundProduct.rows[0],
           status: "success",
-          message: "products fetched",
+          message: `product ${id} fetched`,
         })
         .status(200);
     } else {
@@ -73,7 +77,7 @@ productRouter.delete("/:id", async (req, res) => {
       "DELETE FROM products WHERE id=$1 RETURNING *",
       [Number(id)]
     );
-    if (productToRemove) {
+    if (productToRemove.rows.length > 0) {
       res
         .send({
           data: productToRemove.rows[0],
@@ -93,18 +97,16 @@ productRouter.delete("/:id", async (req, res) => {
 });
 
 productRouter.put("/:id", async (req, res) => {
-  console.log("updated product");
   try {
     let { title, price, description, rating, category, image } = req.body;
-    // console.log(req.body);
     let { id } = req.params;
 
     const updatedProduct = await pool.query(
       "UPDATE products SET title =$1, price = $2, description=$3, rating=$4, category=$5, image=$6 WHERE id =$7 RETURNING *",
       [title, price, description, rating, category, image, id]
     );
-    console.log(updatedProduct);
-    if (updatedProduct) {
+
+    if (updatedProduct.rows.length > 0) {
       res
         .send({
           data: updatedProduct.rows[0],
