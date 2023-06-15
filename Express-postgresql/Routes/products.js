@@ -21,27 +21,32 @@ productRouter.get("/", async (req, res) => {
 
 productRouter.post("/", async (req, res) => {
   try {
+    const { email } = req.user;
     let { title, price, description, rating, category, image } = req.body;
-    console.log("products body", req.body);
-    const newProduct = await pool.query(
-      "INSERT INTO products( title, price, description, rating, category, image) VALUES($1, $2,$3,$4,$5,$6) RETURNING *",
-      [title, price, description, rating, category, image]
-    );
-    if (newProduct.rows.length > 0) {
-      res
-        .send({
+    const user = await pool.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+    if (user.rows[0]) {
+      let userId = user.rows[0].id;
+
+      const newProduct = await pool.query(
+        "INSERT INTO products (title, price, description, rating, category, image, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+        [title, price, description, rating, category, image, userId]
+      );
+      if (newProduct.rows.length > 0) {
+        res.status(200).send({
           data: newProduct.rows[0],
           status: "success",
-          message: "dwtched all users",
-        })
-        .status(200);
+          message: "Created a new product",
+        });
+      } else {
+        res.status(404).send({ status: "error" });
+      }
     } else {
-      res.send({ status: "error" }).status(404);
+      res.status(404).send({ status: "error" });
     }
   } catch (e) {
-    res
-      .send({ status: "error", message: " Could not handle request" })
-      .status(404);
+    res.status(500).send({ status: "error", message: e.message });
   }
 });
 
