@@ -4,13 +4,33 @@ const productRouter = express.Router();
 
 productRouter.get("/", async (req, res) => {
   try {
-    const allProducts = await pool.query("SELECT * FROM products");
-    if (allProducts.rows.length > 0) {
-      res
-        .send({ data: allProducts.rows, status: "success", message })
-        .status(200);
+    const { email } = req.user;
+    const user = await pool.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+    if (user.rows[0]) {
+      let userId = user.rows[0].id;
+      console.log(user.rows[0]);
+
+      const allProducts = await pool.query(
+        "SELECT * FROM products WHERE user_id =$1",
+        [userId]
+      );
+      console.log(allProducts.rows);
+
+      if (allProducts.rows.length > 0) {
+        res
+          .send({
+            data: allProducts.rows,
+            status: "success",
+            message: "data fetched",
+          })
+          .status(200);
+      } else {
+        res.send({ status: "error" }).status(404);
+      }
     } else {
-      res.send({ status: "error" }).status(404);
+      res.send({ status: "error", message: "user not found" }).status(404);
     }
   } catch (e) {
     res
@@ -75,6 +95,7 @@ productRouter.get("/:id", async (req, res) => {
   }
 });
 
+
 productRouter.delete("/:id", async (req, res) => {
   try {
     let { id } = req.params;
@@ -128,5 +149,7 @@ productRouter.put("/:id", async (req, res) => {
     res.send({ status: "error" }).status(404);
   }
 });
+
+;
 
 module.exports = productRouter;

@@ -16,7 +16,6 @@ Middlewaer is a function that runs before the request. It allowss us to conduxt 
 */
 
 require("dotenv").config();
-const pool = require("./db");
 const express = require("express"); // allows you to use express in your application using require import syntax
 const app = express(); //The app variable allows you to access the express features within the  application (via the function call)
 app.use(express.json()); //allows express to use json
@@ -25,6 +24,7 @@ let productRouter = require("./Routes/products");
 let { authRouter } = require("./Routes/auth");
 let userRouter = require("./Routes/users");
 const jwt = require("jsonwebtoken");
+const categoryRouter = require("./Routes/categories");
 
 const isUserLoggedIn = (req, res, next) => {
   const token = req.headers.authorization; // extracting the token from the auth header
@@ -50,6 +50,7 @@ const isUserLoggedIn = (req, res, next) => {
 app.use("/products", isUserLoggedIn, productRouter); // middlewear can be paddef as second argument in app.use()
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
+app.use("/categories", isUserLoggedIn, categoryRouter)
 
 app.get("/", (req, res) => {
   res.send("I am home");
