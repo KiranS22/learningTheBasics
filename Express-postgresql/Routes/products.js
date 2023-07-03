@@ -10,8 +10,7 @@ productRouter.get("/", async (req, res) => {
     ]);
     if (user.rows[0]) {
       let userId = user.rows[0].id;
-      console.log(user.rows[0]);
-
+    
       const allProducts = await pool.query(
         "SELECT * FROM products WHERE user_id =$1",
         [userId]
