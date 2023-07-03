@@ -1,0 +1,12 @@
+Default Routing
+To create Routes In next.js all you need to do is create a folder inside the app directory
+
+The name of the folder will serve as the route name
+
+Inside the route (folder create a page.js) where you vcan then create a react component
+
+Nested Routing
+To ibncorperate nested riyutuing in next.js you just nestr folders within eachother
+
+Dynamic Routing
+ to create a dynamic route in next.js you create a a folder inside your parent route but this time you wrap it in square brackets []

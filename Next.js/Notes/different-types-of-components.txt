@@ -1,0 +1,18 @@
+All components created in the app directory are react server components. Which means that the code is rendered on the server and then sent to the client making the applicatrion load faster and better seo
+
+If you want to change this behaviour to client side rendering, you beed to add "use client" to the top of the component. This means that you can take advantage of React's ability to produce dynamic pages with the performance inhancing capabilities of Next
+
+If you need to use  any hooke in React you must declaire the "use client" directive
+Server Components:
+
+Use server components by default: Next.js recommends using server components by default for most cases. They provide server-side rendering, which improves performance, enables better SEO, and ensures the initial page load is faster.
+When you need to fetch data: If your component needs to fetch data from an external API or perform any server-side processing before rendering, server components are the way to go. They allow you to fetch the data on the server and include it in the initial HTML response, reducing the time taken to load and display the page.
+For static generation (SSG): Server components are suitable when you can pre-render the component's content at build time and serve it as a static page. This approach is great for pages with content that doesn't frequently change and doesn't require real-time data.
+When SEO is crucial: If search engine optimization is a priority for your application, using server components is recommended. By rendering the initial HTML on the server, search engines can easily crawl and index your content.
+Client Components:
+
+When you need interactivity: If your component requires client-side interactivity, such as handling user events or making updates without a full page reload, client components are more appropriate. They allow you to use React's client-side rendering capabilities and take advantage of dynamic updates.
+For real-time data updates: If your component relies on real-time data updates, such as live chat or real-time analytics, using client components allows you to fetch and update the data on the client-side without reloading the entire page.
+Dynamic content generation: If the content of your component depends on user input or changes based on the state of the application, client components are a better choice. They enable you to generate content dynamically based on client-side events or data changes.
+Progressive enhancement: If you want to start with a basic server-rendered version of your component and enhance it with client-side interactivity later, you can use client components to gradually introduce more dynamic behavior.
+Remember, these guidelines are not strict rules, and the choice between server components and client components depends on your specific requirements. It's important to evaluate the trade-offs and consider factors like performance, SEO, interactivity, and data fetching needs when deciding which type of component to use in your Next.js application.

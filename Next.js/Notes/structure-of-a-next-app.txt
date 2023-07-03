@@ -1,0 +1,16 @@
+
+The app folder is the most important folder in the next app.
+
+This folder contains:
+- page.js, layout.js, globals.css
+
+The layout.js is the main entry point to our application, and all components are wrapped within it (its children). This means that any code written within it will be rendered on every page within the application. This allows you to create a template for all pages.
+
+The layout.js file also allows you to customize the appearance of your HTML document, including adding metadata, scripts, links, and fonts.
+
+page.js represents the homepage of the application (what you see when you go to localhost:3000).
+
+page.js is a server-side component as it is rendered server-side.
+
+globals.css contains all the CSS used throughout the entire application. This file has to be imported into layout.js.
+
