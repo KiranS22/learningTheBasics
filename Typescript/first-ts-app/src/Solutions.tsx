@@ -104,6 +104,12 @@ const Solutions = () => {
     company4
   );
 
+
+
+
+
+  
+
   return <div>Solutions</div>;
 };
 

@@ -2,4 +2,13 @@
 1. Create a variable myVar, assign it a type so that it can be either a number or a string or null
 2. Create an Array of Products, and assign type accordingly
 3. Create a type 'hello', for a company Object (Have 5,6 properties including array and strings and optional props. as well)
-  
+
+
+----------------------------------
+1. Create a Comp. Display       that takes in 4 props (Array, boolean ,number and a function). Call the function on button Click. Loop over the array in the child Comp. (use interface)
+
+2. Create three objects using interfaces, and send the data down as props. Display their properties in a child Comp (You can use another Child Component)
+
+3. Create two types (first with 2 numbers, seocnd with 2 strings) and merge them together
+
+4. Merge three interfaces together (2 properties in first, 1 property in 2nd, 4 properties in third).
