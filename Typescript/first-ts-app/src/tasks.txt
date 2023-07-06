@@ -1,9 +1,10 @@
+Day 1 Tasks 
 0. Create 5 variables of different types. Assign types to them inline.
 1. Create a variable myVar, assign it a type so that it can be either a number or a string or null
 2. Create an Array of Products, and assign type accordingly
 3. Create a type 'hello', for a company Object (Have 5,6 properties including array and strings and optional props. as well)
 
-
+Day 2 Tasks
 ----------------------------------
 1. Create a Comp. Display       that takes in 4 props (Array, boolean ,number and a function). Call the function on button Click. Loop over the array in the child Comp. (use interface)
 
