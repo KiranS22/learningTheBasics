@@ -8,6 +8,8 @@ import Display from "./Display";
 import { type } from "os";
 import DisplayInterfaceInfo from "./DisplayInterfaceInfo";
 import { log } from "console";
+import Events from "./Events";
+import Generics from "./Generics";
 
 // object types
 export type Obj1 = {
@@ -226,60 +228,69 @@ interface infA {
   };
 
   // 3. Create two types (first with 2 numbers, seocnd with 2 strings) and merge them together
-type Type1 = {
-  num1: number;
-  num2: number;
-};
-type m = Type1 & {
-  str1: string;
-  str2: string;
-};
-// Testing to see if merged
+  type Type1 = {
+    num1: number;
+    num2: number;
+  };
+  type m = Type1 & {
+    str1: string;
+    str2: string;
+  };
+  // Testing to see if merged
 
-const thisObjIsM: m = {
-  num1: 123,
-  num2: 456,
-  str1: "abc",
-  str2: "xyz",
-};
-console.log("Merged Object:", thisObjIsM);
+  const thisObjIsM: m = {
+    num1: 123,
+    num2: 456,
+    str1: "abc",
+    str2: "xyz",
+  };
+  console.log("Merged Object:", thisObjIsM);
 
-// 4. Merge three interfaces together (2 properties in first, 1 property in 2nd, 4 properties in third).
+  // 4. Merge three interfaces together (2 properties in first, 1 property in 2nd, 4 properties in third).
 
-interface MME {
-  first: number;
-  second: number;
-}
+  interface MME {
+    first: number;
+    second: number;
+  }
 
-interface MME {
-  third: string;
-}
+  interface MME {
+    third: string;
+  }
 
-interface MME {
-  fourth: number;
-  fifth: string;
-  sixth: string[];
-  seven: boolean;
-}
+  interface MME {
+    fourth: number;
+    fifth: string;
+    sixth: string[];
+    seven: boolean;
+  }
 
-// Testing if interd=faces have merged
-const shouldBeM: MME = {
-  first: 13,
-  second: 14,
-  third: "hello",
-  fourth: 15,
-  fifth: "Typescript",
-  sixth: ["Progtramming"],
-  seven: true,
-};
+  // Testing if interd=faces have merged
+  const shouldBeM: MME = {
+    first: 13,
+    second: 14,
+    third: "hello",
+    fourth: 15,
+    fifth: "Typescript",
+    sixth: ["Progtramming"],
+    seven: true,
+  };
 
-console.log("interface object created by merging", shouldBeM);
+  console.log("interface object created by merging", shouldBeM);
   return (
     <>
       <h1>Learning TypeScript</h1>
+      <Events
+        style={{
+          border: "1px solid orange",
+          color: "white",
+          fontWeight: "bold",
+          background: "orange",
+          padding: "8px 16px",
+        }}
+      />
       <Count myNum={myNum} myFunc={myFunc} myName={myName} isPositive />
       <Solutions />
-
+      <Generics />
       <Display
         myBool={myBool}
         myTaskNum={myTaskNum}
@@ -295,7 +306,5 @@ console.log("interface object created by merging", shouldBeM);
     </>
   );
 }
-
-
 
 export default App;
