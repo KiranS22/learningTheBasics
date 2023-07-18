@@ -5,10 +5,7 @@ import { User, myType, UsersArr } from "./app.types";
 import Solutions from "./Solutions";
 import Count from "./Count";
 import Display from "./Display";
-import { type } from "os";
 import DisplayInterfaceInfo from "./DisplayInterfaceInfo";
-import { log } from "console";
-import Events from "./Events";
 import Generics from "./Generics";
 
 // object types
@@ -36,12 +33,12 @@ function App() {
   //variable:datatype
   //number
 
-  // type UsersArr = {
-  //   name: string;
-  //   age: number;
-  //   city: string;
-  //   country?: myType;
-  // }[]
+  type UsersArr = {
+    name: string;
+    age: number;
+    city: string;
+    country?: myType;
+  }[]
 
   // Union
   let x: myType = 10;
@@ -279,7 +276,7 @@ interface infA {
   return (
     <>
       <h1>Learning TypeScript</h1>
-      <Events
+      {/* <Events
         style={{
           border: "1px solid orange",
           color: "white",
@@ -287,7 +284,7 @@ interface infA {
           background: "orange",
           padding: "8px 16px",
         }}
-      />
+      /> */}
       <Count myNum={myNum} myFunc={myFunc} myName={myName} isPositive />
       <Solutions />
       <Generics />

@@ -8,7 +8,13 @@ import React from "react";
 type FuncType<T> = {
   n: T[]; //n => string[]
   a: T; //T: string
-  b: number;
+  b: T;
+};
+
+const myNewObject: FuncType<number> = {
+  n: [10, 20],
+  a: 100,
+  b: 10,
 };
 
 type numOrStrOrBool = boolean | null;
@@ -25,7 +31,7 @@ const myFunc = <T extends string>(arg: FuncType<T>) => {
   console.log("a:", arg.a);
 };
 
-myFunc({ n: ["Hello", "World"], a: "Run", b: 10 });
+myFunc({ n: ["Hello", "World"], a: "Run", b: "10" });
 
 const myFunc2 = <T extends number>(arg2: FuncType<T>) => {
   console.log("Second");
@@ -50,10 +56,56 @@ const newFunc = <T extends string, S extends number>(args: myNewType<T, S>) => {
 const data = { names: ["10", "20"], ages: [10, 230] };
 newFunc(data);
 
+type GType<A, C> = {
+  countries: A[];
+  numbers: C[];
+  name: A;
+  age: C;
+  count?: A | C | boolean;
+};
+
+// type AType = {
+//   n: number;
+// };
+
+// type combinedT = AType & GType<string, number>;
+
+//Interfaces
+interface MyType<A, C> {
+  countries: A[];
+  numbers: C[];
+  name: A;
+  age: C;
+  count?: A | C | boolean;
+}
+
+// A: String | C: number
+const myObject: GType<number, string> = {
+  countries: [1],
+  numbers: ["Hello"],
+  name: 12,
+  age: "John",
+};
+
+console.log("my object", myObject);
+
+interface MyInterface<A, B, C> {
+  first: A[];
+  second: B;
+  Third: C;
+}
+//  object using interface and generic
+
+const interfaceWithG: MyInterface<string, number, boolean> = {
+  first: ["a", "b", "c"],
+  second: 12,
+  Third: true,
+};
+
+console.log("INTERFACE", interfaceWithG);
+
 const Generics = () => {
   return <div>Generics</div>;
 };
 
 export default Generics;
-
-

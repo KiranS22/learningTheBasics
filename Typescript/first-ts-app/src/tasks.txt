@@ -1,4 +1,4 @@
-Day 1 Tasks 
+Day 1 Tasks
 0. Create 5 variables of different types. Assign types to them inline.
 1. Create a variable myVar, assign it a type so that it can be either a number or a string or null
 2. Create an Array of Products, and assign type accordingly
@@ -13,3 +13,13 @@ Day 2 Tasks
 3. Create two types (first with 2 numbers, seocnd with 2 strings) and merge them together
 
 4. Merge three interfaces together (2 properties in first, 1 property in 2nd, 4 properties in third).
+
+-----------------------------------------
+Day 3 AND 4 tasks
+
+create a type with 3 generics (4 props)
+create an interface with 4 Generics (bool, string number object)
+create a type with 2 genericvs and use this type as the function argument
+EXTRA Todo app
+EXTRA Tutorial
++

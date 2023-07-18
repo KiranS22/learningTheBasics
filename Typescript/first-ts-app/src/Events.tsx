@@ -8,7 +8,7 @@ const Events = (props: EventProps) => {
   type stateType = number;
 
   //States
-  const [count, setCount] = useState<stateType>();
+  const [count, setCount] = useState<stateType>(0);
 
   // React.SyntheticEvent
   //React.MouseEvent<HTMLButtonElement>
